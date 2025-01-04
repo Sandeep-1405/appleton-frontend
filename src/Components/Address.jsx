@@ -3,12 +3,14 @@ import axios from 'axios';
 import Navbarr from './Navbar';
 import { CartContext } from '../Context/CartContext';
 import { AuthContext } from '../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const Address = () => {
 
     const {cart,totalPrice,setCart,setTotalPrice} = useContext(CartContext);
     const {jwt} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const cartItems = cart.map(item => ({
         productId: item._id,
@@ -48,9 +50,8 @@ const Address = () => {
           'Authorization': `Bearer ${jwt}`
         }
       });
-
-      
       console.log(response.data);
+     
       setAddress({
         name: '',
         phoneNumber: '',
@@ -64,6 +65,8 @@ const Address = () => {
       setError(null);
       setCart([]);
       setTotalPrice(0);
+      alert('Order placed Successfully');
+      navigate('/')
     } catch (error) {
       console.error('Error adding address:', error);
       setError('Failed to add address. Please try again.');

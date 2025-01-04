@@ -37,71 +37,73 @@ const Orders = () => {
                 </div>
             ) : (
                 <div className="row">
-                    {ordersList.map((order) => (
-                        <div key={order._id} className="col-md-12 mb-4">
-                            <div className="card shadow-sm">
-                                <div className="card-body">
-                                    {/* Order ID as heading */}
-                                    <h3 className="card-title mb-4">Order ID: {order._id}</h3>
+                    {ordersList
+                        .slice()  
+                        .reverse()
+                        .map((order) => (
+                            <div key={order._id} className="col-md-12 mb-4">
+                                <div className="card shadow-sm">
+                                    <div className="card-body">
+                                        {/* Order ID as heading */}
+                                        <h3 className="card-title mb-4">Order ID: {order._id}</h3>
 
-                                    <div className="row">
-                                        {/* Order Status and Payment Status side by side */}
-                                        <div className="col-md-6 mb-3">
-                                            <p>
-                                                <strong>Order Status:</strong> {order.orderStatus}
-                                            </p>
+                                        <div className="row">
+                                            {/* Order Status and Payment Status side by side */}
+                                            <div className="col-md-6 mb-3">
+                                                <p>
+                                                    <strong>Order Status:</strong> {order.orderStatus}
+                                                </p>
+                                            </div>
+                                            <div className="col-md-6 mb-3">
+                                                <p>
+                                                    <strong>Payment Status:</strong> {order.paymentStatus}
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div className="col-md-6 mb-3">
-                                            <p>
-                                                <strong>Payment Status:</strong> {order.paymentStatus}
-                                            </p>
+
+                                        {/* Total Price */}
+                                        <p>
+                                            <strong>Total Price:</strong> ₹{order.totalPrice}
+                                        </p>
+
+                                        {/* Address Section */}
+                                        <h6>Address:</h6>
+                                        <div className="row">
+                                            {/* First Line: Name */}
+                                            <div className="col-md-12">
+                                                <p>
+                                                    <strong>{order.address.name}</strong>
+                                                </p>
+                                            </div>
+                                            {/* Second Line: Other Address Details */}
+                                            <div className="col-md-4">
+                                                <p>
+                                                    {order.address.street}, {order.address.landmark}
+                                                </p>
+                                            </div>
+                                            <div className="col-md-4">
+                                                <p>
+                                                    {order.address.city}
+                                                </p>
+                                            </div>
+                                            <div className="col-md-4">
+                                                <p> 
+                                                    {order.address.phoneNumber}
+                                                </p>
+                                            </div>
                                         </div>
+
+                                        {/* Button */}
+                                        <Link
+                                            to={`/order-details/${order._id}`}
+                                            className="btn btn-outline-primary btn-sm"
+                                        >
+                                            Show More
+                                        </Link>
                                     </div>
-
-                                    {/* Total Price */}
-                                    <p>
-                                        <strong>Total Price:</strong> ₹{order.totalPrice}
-                                    </p>
-
-                                    {/* Address Section */}
-                                    <h6>Address:</h6>
-                                    <div className="row">
-                                        {/* First Line: Name */}
-                                        <div className="col-md-12">
-                                            <p>
-                                                <strong>{order.address.name}</strong>
-                                            </p>
-                                        </div>
-                                        {/* Second Line: Other Address Details */}
-                                        <div className="col-md-4">
-                                            <p>
-                                                {order.address.street}, {order.address.landmark}
-                                            </p>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <p>
-                                                {order.address.city}
-                                                
-                                            </p>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <p> 
-                                                {order.address.phoneNumber}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    {/*  Button */}
-                                    <Link
-                                        to={`/order-details/${order._id}`}
-                                        className="btn btn-outline-primary btn-sm"
-                                    >
-                                        Show More
-                                    </Link>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
             )}
         </div>

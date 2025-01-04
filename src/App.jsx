@@ -9,6 +9,7 @@ import ProductDetails from './Components/ProductDetails'
 import Cart from './Components/Cart'
 import Address from './Components/Address'
 import OrderDetails from './Components/OrderDetails'
+import ForgotPassword from './Components/ForgotPassword'
 
 function App() {
   return(
@@ -23,6 +24,7 @@ function App() {
         <Route path='/cart' element={<Cart />} />
         <Route path='/add-address' element={<Address />} />
         <Route path='/order-details/:id' element={<OrderDetails />} />
+        <Route path='/forgot-password' element={<ForgotPassword />} />
       </Routes>
     </BrowserRouter>
   )

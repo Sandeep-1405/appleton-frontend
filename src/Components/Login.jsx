@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 
 const Login = () => {
@@ -44,7 +44,7 @@ const Login = () => {
               required
             />
           </div>
-          <div className="form-group mb-4">
+          <div className="form-group mb-2">
             <label htmlFor="password">Password</label>
             <div className="input-group">
               <input
@@ -65,12 +65,16 @@ const Login = () => {
               </button>
             </div>
           </div>
+          <div className="text-end m-2">
+            <Link to='/forgot-password' className="text-decoration-none">forgot password?</Link>
+          </div>
+          
           <button type="submit" className="btn btn-primary w-100">
             Login
           </button>
         </form>
-        <p className="mt-3 text-center">
-          Don't have an account? <a href="/signup">Register here</a>
+        <p className="mt-3 text-center ">
+          Don't have an account? <a href="/signup" className="text-decoration-none">Register here</a>
         </p>
       </div>
     </div>
