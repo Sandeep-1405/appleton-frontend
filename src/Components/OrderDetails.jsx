@@ -11,11 +11,12 @@ const OrderDetails = () => {
     const [order, setOrder] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const url = import.meta.env.VITE_APP_BACKEND_URL;
 
     useEffect(() => {
         const fetchOrderDetails = async () => {
             try {
-                const res = await axios.get(`http://localhost:3001/orders/${id}`, {
+                const res = await axios.get(`${url}/orders/${id}`, {
                     headers: { 'Authorization': `Bearer ${jwt}` },
                 });
                 setOrder(res.data.order);

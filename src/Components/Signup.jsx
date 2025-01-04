@@ -11,6 +11,7 @@ const Signup = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const navigate = useNavigate();
+  const url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const handleSignup = async(e) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ const Signup = () => {
     }
 
     try{
-        const res = await axios.post(`http://localhost:3001/register`,{name,email,password});
+        const res = await axios.post(`${url}/register`,{name,email,password});
         console.log(res);
         if(res.status === 201){
             navigate('/login');

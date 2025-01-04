@@ -18,6 +18,8 @@ const AddProduct = () => {
         color: '',
     });
 
+    
+
     const {jwt} = useContext(AuthContext);
 
     const [message, setMessage] = useState('');

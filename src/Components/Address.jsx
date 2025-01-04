@@ -11,6 +11,7 @@ const Address = () => {
     const {cart,totalPrice,setCart,setTotalPrice} = useContext(CartContext);
     const {jwt} = useContext(AuthContext);
     const navigate = useNavigate();
+    const url = import.meta.env.VITE_APP_BACKEND_URL;
 
     const cartItems = cart.map(item => ({
         productId: item._id,
@@ -44,7 +45,7 @@ const Address = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3001/orders', {cartItems,totalPrice,address}, {
+      const response = await axios.post(`${url}/orders`, {cartItems,totalPrice,address}, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${jwt}`

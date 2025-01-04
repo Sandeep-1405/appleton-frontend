@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 const Cart = () => {
     const { cart, removeFromCart, updateQuantity,setTotalPrice } = useContext(CartContext);
 
-    // Calculate Total Price
     const calculateTotal = () => {
         const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
         //console.log(total); 
@@ -15,7 +14,6 @@ const Cart = () => {
     };
     
     const totalPrice = calculateTotal();
-    //console.log(totalPrice)
 
     return (
         <div>

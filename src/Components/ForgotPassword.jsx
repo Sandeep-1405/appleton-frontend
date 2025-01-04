@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const url = import.meta.env.VITE_APP_BACKEND_URL;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:3001/forgot-password', {
+            const response = await axios.post(`${url}/forgot-password`, {
                 email,
                 password,
             });

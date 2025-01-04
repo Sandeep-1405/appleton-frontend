@@ -10,11 +10,12 @@ const Login = () => {
   const navigate = useNavigate();
 
   const { setJwt } = useContext(AuthContext);
+  const url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:3001/login`, { email, password });
+      const res = await axios.post(`${url}/login`, { email, password });
       console.log(res);
       if (res.status === 200) {
         localStorage.setItem('jwt',res.data.jwtToken)

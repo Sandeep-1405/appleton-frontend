@@ -7,10 +7,11 @@ import Navbarr from "./Navbar";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { addToCart, cart } = useContext(CartContext); // Use cart context
+  const { addToCart, cart } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const { jwt } = useContext(AuthContext);
+  const url = import.meta.env.VITE_APP_BACKEND_URL;
 
   useEffect(() => {
     fetchProductDetails();
@@ -18,7 +19,7 @@ const ProductDetails = () => {
 
   const fetchProductDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/products/${id}`, {
+      const response = await axios.get(`${url}/products/${id}`, {
         headers: { Authorization: `Bearer ${jwt}` },
       });
       setProduct(response.data[0]);

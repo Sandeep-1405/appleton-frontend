@@ -39,7 +39,7 @@ const Home = () => {
       return;
     }
     try{
-      const response = await axios.post(`http://localhost:3001/search/${input}`,{},{headers:{'Authorization':`Bearer ${jwt}`}})
+      const response = await axios.post(`${url}/search/${input}`,{},{headers:{'Authorization':`Bearer ${jwt}`}})
       console.log(response.data);
       setProductsList(response.data)
     }catch(error){

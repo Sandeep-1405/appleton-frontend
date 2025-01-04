@@ -6,8 +6,9 @@ import { AuthContext } from '../Context/AuthContext';
 import { Link } from 'react-router-dom';
 
 const Orders = () => {
-    const [ordersList, setOrdersList] = useState([]); // Initialize as empty array
+    const [ordersList, setOrdersList] = useState([]); 
     const { jwt } = useContext(AuthContext);
+    const url = import.meta.env.VITE_APP_BACKEND_URL;
 
     useEffect(() => {
         fetchOrders();
@@ -15,7 +16,7 @@ const Orders = () => {
 
     const fetchOrders = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/orders', {
+            const res = await axios.get(`${url}/orders`, {
                 headers: { Authorization: `Bearer ${jwt}` },
             });
 
